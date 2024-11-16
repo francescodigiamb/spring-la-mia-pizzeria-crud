@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import it.lessons.pizzeria.repository.PizzaRepository;
 
 @Controller
-@RequestMapping ("/pizza")
+@RequestMapping ("/pizzeria")
 public class ControllerPizzeria {
 
 	@Autowired 
@@ -18,7 +18,7 @@ public class ControllerPizzeria {
 	@GetMapping 
 	public String index (Model model) {
 		
-		model.addAttribute("pizza", pizzaRepo.findAll());
+		model.addAttribute("pizze", pizzaRepo.findAll());
 		
 		return "/pizza/index";
 	}
