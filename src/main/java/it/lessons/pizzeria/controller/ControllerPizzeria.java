@@ -1,18 +1,26 @@
 package it.lessons.pizzeria.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import it.lessons.pizzeria.repository.PizzaRepository;
+
 @Controller
-@RequestMapping ("/home")
+@RequestMapping ("/pizza")
 public class ControllerPizzeria {
 
-	@GetMapping
+	@Autowired 
+	private PizzaRepository pizzaRepo;
+	
+	@GetMapping 
 	public String index (Model model) {
 		
-		return "home";
+		model.addAttribute("pizza", pizzaRepo.findAll());
+		
+		return "/pizza/index";
 	}
 	
 		
