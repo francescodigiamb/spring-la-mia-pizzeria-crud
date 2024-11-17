@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <div th:replace="~{fragments :: head}"></div>
+    <title th:text="${pizze.nome}"> </title>
+</head>
+
+<body>
+    <div class="d-flex align-items-start flex-column mb-3" style="height: 85vh;">
+        <div class="container mb-auto" th:object="${pizze}">
+            <h1 th:text="*{nome}"></h1>
+            <hr />
+            <div class="row">
+                <div class="col-8">
+                    <dl>
+                        <dt>Foto</dt>
+                        <dd th:text="*{foto}"></dd>
+                        <dt>Descrizione</dt>
+                        <dd th:text="*{descrizione}"></dd>
+                        <dt>Prezzo</dt>
+                        <dd th:text="*{prezzo}"></dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <a class="btn btn-primary" th:href="@{/pizzeria}" role="button">Indietro</a>
+        </div>
+    </div>
+
+
+
+    <div th:replace="~{fragments :: script}"></div>
+</body>
+
+</html>
