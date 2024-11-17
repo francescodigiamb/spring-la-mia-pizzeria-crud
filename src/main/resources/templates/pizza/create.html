@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <div th:replace="~{fragments :: head}"></div>
+    <title>Creazione pizza </title>
+</head>
+
+<body>
+
+    <div class="d-flex align-items-start flex-column mb-3" style="height: 85vh;">
+        <div class="container mb-auto">
+            <h1>Nuova Pizza</h1>
+            <hr />
+            <div class="row">
+                <div class="mb-3 col-4">
+                    <label for="NomePizza" class="form-label">Nome pizza</label>
+                    <input type="text" class="form-control" id="NomePizza" placeholder="Nome">
+                </div>
+                <div class="mb-3 col-2">
+                    <label for="PrezzoPizza" class="form-label">Prezzo</label>
+                    <input type="number" class="form-control" id="PrezzoPizza" placeholder="Prezzo">
+                </div>
+            </div>
+            <div class="mb-3 col-6">
+                <label for="UrlPizza" class="form-label">Url foto pizza</label>
+                <input type="text" class="form-control" id="UrlPizza">
+            </div>
+            <div class="mb-3 col-6">
+                <label for="descrizione" class="form-label">Descrizione</label>
+                <textarea class="form-control" id="descrizione" rows="3"></textarea>
+            </div>
+            <div class="mb-3 col-3">
+                <button type="button" class="btn btn-success">Aggiungi pizza</button>
+                <button type="button" class="btn btn-danger">Cancella</button>
+            </div>
+
+        </div>
+    </div>
+
+    <div th:replace="~{fragments :: script}"></div>
+</body>
+
+</html>

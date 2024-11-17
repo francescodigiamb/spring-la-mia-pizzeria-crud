@@ -7,12 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import it.lessons.pizzeria.model.Pizza;
 import it.lessons.pizzeria.repository.PizzaRepository;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 @RequestMapping("/pizzeria")
@@ -46,6 +49,24 @@ public class ControllerPizzeria {
 		}
 
 		return "/pizza/show";
+	}
+
+	@GetMapping("/create")
+	public String create(Model model) {
+		model.addAttribute("pizza", new Pizza());
+		return "/pizza/create";
+	}
+
+	@PostMapping("/create")
+	public String store(@ModelAttribute("pizza") Pizza formPizza, Model model) {
+
+		if (formPizza.getNome() == null || formPizza.getDescrizione() == null || formPizza.getPrezzo() == null) {
+			return "/pizza/create";
+		}
+
+		pizzaRepo.save(formPizza);
+
+		return "redirect:/pizzeria";
 	}
 
 }
