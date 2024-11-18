@@ -10,8 +10,10 @@
 
 		<h1>Benvenuto nella mia pizzeria</h1>
 
-		<div class="container">
-			<form th:action="@{/pizzeria}" method="get">
+		<div class="container row g-3">
+			<a class="btn btn-success col-md-2" th:href="@{/pizzeria/create}"><i class="fas fa-plus"></i> Nuova
+				pizza</a>
+			<form th:action="@{/pizzeria}" class="col-md-10" method="get">
 				<div class="input-group">
 					<input name="keyword" type="search" th:value="${keyword}" class="form-control" placeholder="Cerca"
 						aria-label="Cerca">
