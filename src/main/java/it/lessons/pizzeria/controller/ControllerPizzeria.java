@@ -18,6 +18,7 @@ import it.lessons.pizzeria.repository.PizzaRepository;
 import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 @RequestMapping("/pizzeria")
@@ -65,6 +66,25 @@ public class ControllerPizzeria {
 
 		if (bindingResult.hasErrors()) {
 			return "/pizza/create";
+		}
+
+		pizzaRepo.save(formPizza);
+
+		return "redirect:/pizzeria";
+	}
+
+	@GetMapping("/edit/{id}")
+	public String edit(@PathVariable("id") Integer id, Model model) {
+		model.addAttribute("pizza", pizzaRepo.findById(id).get());
+		return "pizza/edit";
+	}
+
+	@PostMapping("/edit/{id}")
+	public String update(@Valid @ModelAttribute("pizza") Pizza formPizza,
+			BindingResult bindingResult, Model model) {
+
+		if (bindingResult.hasErrors()) {
+			return "/pizza/edit";
 		}
 
 		pizzaRepo.save(formPizza);

@@ -3,7 +3,7 @@
 
 <head>
     <div th:replace="~{fragments :: head}"></div>
-    <title>Creation pizza </title>
+    <title>Edit pizza </title>
 </head>
 
 <body>
@@ -13,9 +13,9 @@
             <br>
             <div th:replace="~{fragments :: navbar}"></div>
             <br>
-            <h1>New Pizza</h1>
+            <h1>Edit Pizza</h1>
             <hr />
-            <form id="formPizza" th:object="${pizza}" th:action="@{/pizzeria/create}" method="post">
+            <form id="formPizza" th:object="${pizza}" th:action="@{|/pizzeria/edit/${pizza.id}|}" method="post">
                 <!-- Blocco nome -->
                 <div class="mb-3 col-4">
                     <label for="NamePizza" class="form-label">Name pizza</label>
@@ -56,7 +56,7 @@
                 </div>
                 <!-- Pulsanti -->
                 <div class="mb-3 col-3">
-                    <button type="submit" class="btn btn-primary">Add pizza</button>
+                    <button type="submit" class="btn btn-primary">Update pizza</button>
                     <a type="submit" class="btn btn-danger" th:href="@{/pizzeria}">Cancel</a>
                 </div>
             </form>

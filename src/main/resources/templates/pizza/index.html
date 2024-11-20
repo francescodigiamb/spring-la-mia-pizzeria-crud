@@ -14,7 +14,7 @@
 
 		<br>
 		<div th:if="${!pizzas.isEmpty()}">
-			<table class="table table-striped" style="opacity: 1;">
+			<table class="table table-striped">
 				<thead>
 					<tr>
 						<th>
@@ -42,6 +42,11 @@
 						<td>
 							<a class="btn btn-primary" th:href="@{|/pizzeria/show/${pizza.id}|}">
 								<i class="fas fa-pizza-slice"></i>
+							</a>
+						</td>
+						<td>
+							<a class="btn btn-primary" th:href="@{|/pizzeria/edit/${pizza.id}|}">
+								<i class="fas fa-edit"></i>
 							</a>
 						</td>
 					</tr>

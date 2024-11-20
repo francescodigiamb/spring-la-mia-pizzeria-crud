@@ -9,6 +9,9 @@
 <body>
     <div class="d-flex align-items-start flex-column mb-3" style="height: 85vh;">
         <div class="container mb-auto" th:object="${pizzas}">
+            <br>
+            <div th:replace="~{fragments :: navbar}"></div>
+            <br>
             <h1 th:text="*{name}"></h1>
             <hr />
             <div class="row">

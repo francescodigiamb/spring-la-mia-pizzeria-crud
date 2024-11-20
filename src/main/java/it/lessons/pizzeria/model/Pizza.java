@@ -1,5 +1,7 @@
 package it.lessons.pizzeria.model;
 
+import java.util.StringJoiner;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -75,6 +77,7 @@ public class Pizza {
 
 	@Override
 	public String toString() {
+
 		return "Pizza [name=" + name + ", description=" + description + ", photo=" + photo + ", price=" + price + "]";
 	}
 
