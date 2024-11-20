@@ -8,6 +8,6 @@ import it.lessons.pizzeria.model.Pizza;
 
 public interface PizzaRepository extends JpaRepository<Pizza, Integer> {
 
-    public List<Pizza> findByDescrizione(String descrizione);
+    public List<Pizza> findByNameContaining(String name);
 
 }

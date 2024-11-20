@@ -3,29 +3,29 @@
 
 <head>
     <div th:replace="~{fragments :: head}"></div>
-    <title th:text="${pizze.nome}"> </title>
+    <title th:text="${pizzas.name}"> </title>
 </head>
 
 <body>
     <div class="d-flex align-items-start flex-column mb-3" style="height: 85vh;">
-        <div class="container mb-auto" th:object="${pizze}">
-            <h1 th:text="*{nome}"></h1>
+        <div class="container mb-auto" th:object="${pizzas}">
+            <h1 th:text="*{name}"></h1>
             <hr />
             <div class="row">
                 <div class="col-8">
                     <dl>
-                        <dt>Foto</dt>
-                        <dd th:text="*{foto}"></dd>
-                        <dt>Descrizione</dt>
-                        <dd th:text="*{descrizione}"></dd>
-                        <dt>Prezzo</dt>
-                        <dd th:text="*{prezzo}"></dd>
+                        <dt>Photo</dt>
+                        <dd><img th:src="@{*{photo}}" th:alt="*{name}" width="100px" height="100px"></dd>
+                        <dt>Description</dt>
+                        <dd th:text="*{description}"></dd>
+                        <dt>Price</dt>
+                        <dd th:text="|*{#numbers.formatDecimal(price, 0, 2, 'COMMA')} €|"></dd>
                     </dl>
                 </div>
             </div>
         </div>
         <div class="container">
-            <a class="btn btn-primary" th:href="@{/pizzeria}" role="button">Indietro</a>
+            <a class="btn btn-primary" th:href="@{/pizzeria}" role="button">Back</a>
         </div>
     </div>
 

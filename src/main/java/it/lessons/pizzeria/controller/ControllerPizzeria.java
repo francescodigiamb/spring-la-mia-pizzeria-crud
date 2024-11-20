@@ -28,16 +28,16 @@ public class ControllerPizzeria {
 
 	@GetMapping
 	public String index(Model model, @RequestParam(name = "keyword", required = false) String keyword) {
-		List<Pizza> lepizze;
+		List<Pizza> allPizzas;
 
 		if (keyword != null && !keyword.isBlank()) {
-			lepizze = pizzaRepo.findByDescrizione(keyword);
+			allPizzas = pizzaRepo.findByNameContaining(keyword);
 			model.addAttribute("keyword", keyword);
 		} else {
-			lepizze = pizzaRepo.findAll();
+			allPizzas = pizzaRepo.findAll();
 		}
 
-		model.addAttribute("pizze", lepizze);
+		model.addAttribute("pizzas", allPizzas);
 
 		return "/pizza/index";
 	}
@@ -47,7 +47,7 @@ public class ControllerPizzeria {
 
 		Optional<Pizza> pizzOptional = pizzaRepo.findById(id);
 		if (pizzOptional.isPresent()) {
-			model.addAttribute("pizze", pizzOptional.get());
+			model.addAttribute("pizzas", pizzOptional.get());
 		}
 
 		return "/pizza/show";

@@ -7,55 +7,41 @@
 
 <body>
 	<div class="container">
+		<br>
+		<h1>Welcome to my pizzeria</h1>
 
-		<h1>Benvenuto nella mia pizzeria</h1>
+		<div th:replace="~{fragments :: navbar}"></div>
 
-		<div class="container row g-3">
-			<a class="btn btn-success col-md-2" th:href="@{/pizzeria/create}"><i class="fas fa-plus"></i> Nuova
-				pizza</a>
-			<form th:action="@{/pizzeria}" class="col-md-10" method="get">
-				<div class="input-group">
-					<input name="keyword" type="search" th:value="${keyword}" class="form-control" placeholder="Cerca"
-						aria-label="Cerca">
-					<button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
-				</div>
-			</form>
-		</div>
-
-		<div th:if="${!pizze.isEmpty()}">
-			<table class="table">
+		<br>
+		<div th:if="${!pizzas.isEmpty()}">
+			<table class="table table-striped" style="opacity: 1;">
 				<thead>
 					<tr>
 						<th>
-							Nome
+							Name
 						</th>
 						<th>
-							Foto
+							Photo
 						</th>
 						<th>
-							Descrizione
+							Description
 						</th>
 						<th>
-							Prezzo
+							Price
 						</th>
 						<th>
 						</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="pizza : ${pizze}">
-						<td th:text="${pizza.nome}"></td>
-						<td th:text="${pizza.foto}"></td>
-						<td th:text="${pizza.descrizione}"></td>
-						<td th:text="${pizza.prezzo}"></td>
+					<tr th:each="pizza : ${pizzas}">
+						<td th:text="${pizza.name}"></td>
+						<td><img th:src="@{${pizza.photo}}" width="60px" height="60px"></td>
+						<td th:text="${pizza.description}"></td>
+						<td th:text="|${#numbers.formatDecimal(pizza.price, 0, 2, 'COMMA')} €|"></td>
 						<td>
 							<a class="btn btn-primary" th:href="@{|/pizzeria/show/${pizza.id}|}">
-								<!-- icona bootstrap -->
-								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-									class="bi bi-list" viewBox="0 0 16 16">
-									<path fill-rule="evenodd"
-										d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
-								</svg>
+								<i class="fas fa-pizza-slice"></i>
 							</a>
 						</td>
 					</tr>
@@ -63,8 +49,8 @@
 			</table>
 		</div>
 
-		<div th:if="${pizze.isEmpty()}" class="alert alert-warning" role="alert">
-			Non abbiamo pizze!
+		<div th:if="${pizzas.isEmpty()}" class="alert alert-warning" role="alert">
+			The pizza isn't present!
 		</div>
 
 

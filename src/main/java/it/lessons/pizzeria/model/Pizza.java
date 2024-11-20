@@ -11,27 +11,27 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
-@Table(name = "pizze")
+@Table(name = "pizzas")
 public class Pizza {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	@NotNull(message = "Il nome della pizza non può essere nullo")
-	@NotBlank(message = "Il nome della pizza non può essere vuoto")
-	@Size(max = 30, message = "Il nome non può avere più di 30 caratteri")
-	private String nome;
+	@NotNull(message = "The name can't be null")
+	@NotBlank(message = "The name can't be empty")
+	@Size(max = 30, message = "The name can't be have max 30 characters")
+	private String name;
 
-	@NotNull(message = "La descrizione della pizza non può essere nulla")
-	@NotBlank(message = "La descrizione della pizza non può essere vuota")
-	private String descrizione;
+	@NotNull(message = "The description can't be null")
+	@NotBlank(message = "The description can't be empty")
+	private String description;
 
-	private String foto;
+	private String photo;
 
-	@NotNull(message = "Il prezzo della pizza non può essere nullo")
-	@Min(value = 4, message = "Il prezzo non può essere meno di 4")
-	private Double prezzo;
+	@NotNull(message = "The price can't be null")
+	@Min(value = 4, message = "The price must be at least 4")
+	private Double price;
 
 	public Integer getId() {
 		return id;
@@ -41,41 +41,41 @@ public class Pizza {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getName() {
+		return name;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getDescrizione() {
-		return descrizione;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDescrizione(String descrizione) {
-		this.descrizione = descrizione;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	public String getFoto() {
-		return foto;
+	public String getPhoto() {
+		return photo;
 	}
 
-	public void setFoto(String foto) {
-		this.foto = foto;
+	public void setPhoto(String photo) {
+		this.photo = photo;
 	}
 
-	public Double getPrezzo() {
-		return prezzo;
+	public Double getPrice() {
+		return price;
 	}
 
-	public void setPrezzo(Double prezzo) {
-		this.prezzo = prezzo;
+	public void setPrice(Double price) {
+		this.price = price;
 	}
 
 	@Override
 	public String toString() {
-		return "Pizza [nome=" + nome + ", descrizione=" + descrizione + ", foto=" + foto + ", prezzo="
-				+ prezzo + "]";
+		return "Pizza [name=" + name + ", description=" + description + ", photo=" + photo + ", price=" + price + "]";
 	}
+
 }
