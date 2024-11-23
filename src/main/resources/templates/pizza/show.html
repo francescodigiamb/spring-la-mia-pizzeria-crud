@@ -28,7 +28,24 @@
             </div>
         </div>
         <div class="container">
-            <a class="btn btn-primary" th:href="@{/pizzeria}" role="button">Back</a>
+            <div class="row">
+                <div class="col-md-2">
+                    <a class="btn btn-primary" th:href="@{/pizzeria}" role="button">Back</a>
+                </div>
+                <div class="col-md-2">
+                    <a class="btn btn-primary" th:href="@{|/pizzeria/edit/*{id}|}">
+                        <i class="fas fa-edit"></i> Edit
+                    </a>
+                </div>
+                <div class="col-md-2">
+                    <form action="#" th:action="@{|/pizzeria/delete/*{id}|}" method="post">
+                        <button class="btn btn-danger" type="submit" id="delete-button"
+                            onclick="return confirm('Are you sure?')">
+                            <i class="fas fa-trash-alt"></i> Delete
+                        </button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 

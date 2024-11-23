@@ -8,10 +8,11 @@
 <body>
 	<div class="container">
 		<br>
-		<h1>Welcome to my pizzeria</h1>
+		<h1 class="text-center">Welcome to my pizzeria</h1>
 
 		<div th:replace="~{fragments :: navbar}"></div>
-
+		<br>
+		<h3 class="text-center">Menu</h3>
 		<br>
 		<div th:if="${!pizzas.isEmpty()}">
 			<table class="table table-striped">
@@ -31,6 +32,8 @@
 						</th>
 						<th>
 						</th>
+						<th></th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -48,6 +51,14 @@
 							<a class="btn btn-primary" th:href="@{|/pizzeria/edit/${pizza.id}|}">
 								<i class="fas fa-edit"></i>
 							</a>
+						</td>
+						<td>
+							<form action="#" th:action="@{|/pizzeria/delete/${pizza.id}|}" method="post">
+								<button class="btn btn-danger" type="submit" id="delete-button"
+									onclick="return confirm('Are you sure?')">
+									<i class="fas fa-trash-alt"></i>
+								</button>
+							</form>
 						</td>
 					</tr>
 				</tbody>

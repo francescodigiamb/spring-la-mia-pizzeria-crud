@@ -1,7 +1,5 @@
 package it.lessons.pizzeria.model;
 
-import java.util.StringJoiner;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

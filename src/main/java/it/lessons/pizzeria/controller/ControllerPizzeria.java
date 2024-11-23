@@ -18,7 +18,6 @@ import it.lessons.pizzeria.repository.PizzaRepository;
 import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 @RequestMapping("/pizzeria")
@@ -88,6 +87,14 @@ public class ControllerPizzeria {
 		}
 
 		pizzaRepo.save(formPizza);
+
+		return "redirect:/pizzeria";
+	}
+
+	@PostMapping("/delete/{id}")
+	public String delete(@PathVariable("id") Integer id) {
+
+		pizzaRepo.deleteById(id);
 
 		return "redirect:/pizzeria";
 	}
